@@ -15,7 +15,8 @@ function UserButton() {
   return (
     <DropdownMenu>
   <DropdownMenuTrigger>
-    <UserAvatar/>
+    {/* image src would throw error at first, as it won't be listed under next.config.js */}
+    <UserAvatar name="Kaustav" image="https://github.com/shadcn.png"/>
   </DropdownMenuTrigger>
   <DropdownMenuContent>
     <DropdownMenuLabel>My Account</DropdownMenuLabel>
