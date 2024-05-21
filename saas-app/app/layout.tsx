@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/Components/Header";
 import { ThemeProvider } from "@/Components/ThemeProvider";
+import Clientproviders from "@/Components/Clientproviders";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,6 +18,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    // helps us to handle user session
+    // for server session, we have nextAuth, middleware
+    <Clientproviders>
     <html lang="en">
       {/* inter is nothing but a font */}
       <body className={inter.className}> 
@@ -31,5 +35,6 @@ export default function RootLayout({
       </ThemeProvider>
       </body>
     </html>
+    </Clientproviders>
   );
 }
