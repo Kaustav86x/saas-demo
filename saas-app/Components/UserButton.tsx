@@ -9,9 +9,10 @@ import {
   } from "./ui/dropdown-menu"
 import { Avatar } from '@radix-ui/react-avatar'
 import UserAvatar from './UserAvatar'
+import { Session } from 'next-auth'
   
 
-function UserButton() {
+function UserButton({ session } : {session: Session | null}) {
   return (
     //session....
     
