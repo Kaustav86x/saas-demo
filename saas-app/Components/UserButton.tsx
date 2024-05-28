@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react'
 import {
     DropdownMenu,
@@ -10,9 +12,22 @@ import {
 import { Avatar } from '@radix-ui/react-avatar'
 import UserAvatar from './UserAvatar'
 import { Session } from 'next-auth'
+import { Button } from './ui/button'
+import { signIn } from 'next-auth/react';
   
-
+// logged in or not
 function UserButton({ session } : {session: Session | null}) {
+  if(!session) {
+    return (
+      <Button variant={'outline'} onClick={() => 
+      { setTimeout("5000"),
+      signIn()
+      }
+      }>
+        Sign In
+      </Button>
+    )
+  }
   return (
     //session....
     
