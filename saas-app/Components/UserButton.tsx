@@ -13,7 +13,7 @@ import { Avatar } from '@radix-ui/react-avatar'
 import UserAvatar from './UserAvatar'
 import { Session } from 'next-auth'
 import { Button } from './ui/button'
-import { signIn } from 'next-auth/react';
+import { signIn, signOut } from 'next-auth/react';
   
 // logged in or not
 function UserButton({ session } : {session: Session | null}) {
@@ -29,24 +29,27 @@ function UserButton({ session } : {session: Session | null}) {
     )
   }
   return (
-    //session....
-    
+    // if the session exists render the user menu components....
+    session && (
     <DropdownMenu>
   <DropdownMenuTrigger>
     {/* image src would throw error at first, as it won't be listed under next.config.js */}
-    <UserAvatar name="Kaustav Dey" image="https://github.com/shadcn.png"/>
+    <UserAvatar 
+    name={session.user?.name} 
+    image={session.user?.image}/>
   </DropdownMenuTrigger>
   <DropdownMenuContent>
-    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+    <DropdownMenuLabel>{session.user?.name}</DropdownMenuLabel>
     <DropdownMenuSeparator />
-    <DropdownMenuItem>Profile</DropdownMenuItem>
+    <DropdownMenuItem onClick={() => signOut}>Sign Out</DropdownMenuItem>
+    {/* <DropdownMenuItem>Profile</DropdownMenuItem>
     <DropdownMenuItem>Billing</DropdownMenuItem>
     <DropdownMenuItem>Team</DropdownMenuItem>
-    <DropdownMenuItem>Subscription</DropdownMenuItem>
+    <DropdownMenuItem>Subscription</DropdownMenuItem> */}
   </DropdownMenuContent>
 </DropdownMenu>
-
-  )
+    )
+  );
 }
 
 export default UserButton
