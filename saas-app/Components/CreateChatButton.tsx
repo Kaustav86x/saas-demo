@@ -1,7 +1,7 @@
 "use client";
 
 
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { Button } from './ui/button';
 import { MessageSquarePlusIcon } from 'lucide-react';
 
@@ -11,7 +11,7 @@ function CreateChatButton() {
     router.push(`./chat/randomChat`);
 }
   return (
-    <Button variant={'secondary'}>
+    <Button variant={'ghost'}>
         <MessageSquarePlusIcon/>
     </Button>
   );
